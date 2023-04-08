@@ -1,6 +1,11 @@
 ---
----
+import Disclosure from '../components/Disclosure/Disclosure.astro'
 
+// A fix for Astro not liking `slot='trigger'` being applied directly to elements
+function slotAttr(slot: string) {
+	return { 'slot': slot }
+}
+---
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
@@ -10,6 +15,15 @@
 		<title>Astro</title>
 	</head>
 	<body>
-		<h1>Astro</h1>
+		<h1>🧙‍♂️ 🐻 🤓</h1>
+		<Disclosure>
+			<button {...slotAttr('trigger')}>Toggle</button>
+
+			<h3>Content</h3>
+			<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Obcaecati assumenda nihil labore laborum saepe, soluta, ad facilis harum nostrum accusantium accusamus laboriosam incidunt, modi repellendus debitis asperiores autem corrupti libero?</p>
+		</Disclosure>
 	</body>
 </html>
+<script>
+import './_/script.ts'
+</script>

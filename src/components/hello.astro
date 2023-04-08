@@ -1,0 +1,19 @@
+<script>
+    class HelloFuzzy extends HTMLElement{
+        constructor(){
+            super();
+            this.attachShadow({mode: 'open'});
+        }
+        connectedCallback(){
+            this.shadowRoot.innerHTML = `
+                <style>
+                    h1{
+                        color: red;
+                    }
+                </style>
+                <h1>Hello Fuzzy</h1>
+            `;
+        }
+    }
+customElements.define('a-hello-fuzzy', HelloFuzzy);
+</script>

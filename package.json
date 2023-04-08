@@ -1,15 +1,28 @@
 {
-  "name": "shaggy-singularity",
-  "type": "module",
-  "version": "0.0.1",
-  "scripts": {
-    "dev": "astro dev",
-    "start": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
-  },
-  "dependencies": {
-    "astro": "^2.2.1"
-  }
+	"name": "shaggy-singularity",
+	"type": "module",
+	"version": "0.0.1",
+	"scripts": {
+		"start": "astro dev",
+		"build": "astro build",
+		"serve": "astro preview",
+		"astro": "astro"
+	},
+	"dependencies": {
+		"astro": "2.2.1",
+		"typescript": "5.0.4"
+	},
+	"prettier": {
+		"singleQuote": true,
+		"useTabs": true,
+		"overrides": [
+			{
+				"files": "*.md",
+				"options": {
+					"tabWidth": 2,
+					"useTabs": false
+				}
+			}
+		]
+	}
 }

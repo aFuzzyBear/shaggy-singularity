@@ -1,10 +1,12 @@
 lockfileVersion: 5.4
 
 specifiers:
-  astro: ^2.2.1
+  astro: 2.2.1
+  typescript: 5.0.4
 
 dependencies:
   astro: 2.2.1
+  typescript: 5.0.4
 
 packages:
 
