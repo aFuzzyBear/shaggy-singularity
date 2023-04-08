@@ -89,13 +89,27 @@ export const getStyleRule = (root: DocumentOrShadowRoot, selectorText: string): 
 	return null
 }
 
-export const h = (name: string, attrs?: Attrs, ...children: ChildNode[]) => withNodes(
+export const h = <K extends keyof HTMLElementTagNameMap | NonNullable<string>>(name: K, attrs?: Attrs, ...children: ChildNode[]): K extends keyof HTMLElementTagNameMap ? HTMLElementTagNameMap[K] : HTMLElement => withNodes(
 	withAttrs(
 		document.createElement(name),
 		Object(attrs)
 	),
 	...children
 )
+
+export const withEvents = <T>(target: EventTarget & T, events: {
+	[K in string]: K extends keyof HTMLElementEventMap ? {
+		(event: HTMLElementEventMap[K]): void
+	} : {
+		(event: Event | any): void
+	}
+}, options?: AddEventListenerOptions): T => {
+	for (const type in events) {
+		target.addEventListener(type, events[type], options)
+	}
+
+	return target
+}
 
 export class Fragment extends DocumentFragment {
 	constructor(...children: ChildNode[]) {

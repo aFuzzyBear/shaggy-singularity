@@ -1,0 +1,18 @@
+:host::part(tabs) {
+	display: flex;
+
+	gap: 1em;
+}
+
+:host::part(tab) {
+	display: block;
+
+	padding: 0.25em 1em;
+
+	box-shadow: 0 0 0 1px inset;
+	border-radius: 0.25em;
+}
+
+button {
+	all: unset;
+}

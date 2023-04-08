@@ -1,5 +1,6 @@
 ---
 import Disclosure from '../components/Disclosure/Disclosure.astro'
+import Panelset from '../components/Panelset/Panelset.astro'
 
 // A fix for Astro not liking `slot='trigger'` being applied directly to elements
 function slotAttr(slot: string) {
@@ -22,6 +23,17 @@ function slotAttr(slot: string) {
 			<h3>Content</h3>
 			<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Obcaecati assumenda nihil labore laborum saepe, soluta, ad facilis harum nostrum accusantium accusamus laboriosam incidunt, modi repellendus debitis asperiores autem corrupti libero?</p>
 		</Disclosure>
+
+		<Panelset>
+			<h3>First</h3>
+			<p>This is the first section.</p>
+
+			<h3>Middle</h3>
+			<p>This is the middle section.</p>
+
+			<h3>Last</h3>
+			<p>This is the last section.</p>
+		</Panelset>
 	</body>
 </html>
 <script>

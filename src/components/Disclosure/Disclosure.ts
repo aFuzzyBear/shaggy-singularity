@@ -1,5 +1,6 @@
 import type { ShadowRootInit } from '../../client/dom.ts'
-import { ReflectElement, Fragment, style, h, getPart, getStyleRule } from '../../client/dom.ts'
+import { ReflectElement, Fragment, style, h, getPart, getStyleRule, withEvents } from '../../client/dom.ts'
+import cssText from './Disclosure.css'
 
 export class DisclosureElement extends ReflectElement {
 	constructor() {
@@ -8,17 +9,21 @@ export class DisclosureElement extends ReflectElement {
 		const rule = getStyleRule(root, ':host::part(content)')!
 		const trigger = getPart<HTMLSlotElement>(root, 'trigger')!
 
-		trigger.addEventListener('click', event => {
-			event.preventDefault()
+		withEvents(trigger, {
+			click(event: PointerEvent) {
+				event.preventDefault()
 
-			host.state.isExpanded = !host.state.isExpanded
+				host.state.isExpanded = !host.state.isExpanded
+			}
 		}, { capture: true })
 
-		host.addEventListener('statechange', event => {
-			switch (event.name) {
-				case 'isExpanded':
-					rule.style.display = event.value ? 'block' : 'none'
-					break
+		withEvents(host, {
+			statechange(event: StateEvent) {
+				switch (event.name) {
+					case 'isExpanded':
+						rule.style.display = event.value ? 'block' : 'none'
+						break
+				}
 			}
 		})
 
@@ -34,6 +39,6 @@ export class DisclosureElement extends ReflectElement {
 	}
 
 	static styles = [
-		style(':host::part(content){}')
+		style(cssText)
 	]
 }
